@@ -21,6 +21,14 @@
   margin: 0;
 }
 
+.nav-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f2f2f2;
+  padding-left: 10px;
+  margin: 0;
+}
+
 .navLink {
   display: inline-block;
   color: #f2f2f2;

@@ -7,7 +7,10 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route all gardens
-  const queryText = `SELECT * FROM "garden" ORDER BY "garden_id" ASC;`;
+  const queryText = `
+  SELECT * FROM "garden"
+  WHERE  "user_id" = ${req.user.id}
+  ORDER BY "garden_id" ASC;`;
   pool.query(queryText)
   .then ( result => {
     res.send(result.rows);

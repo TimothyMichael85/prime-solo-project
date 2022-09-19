@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery } from 'redux-saga/effects';
+
 
 // worker Saga: will be fired on "FETCH_GARDEN actions
 function* fetchGarden() {
@@ -41,9 +42,19 @@ function* deleteGarden(action) {
   }
 } // end DELETEGARDEN
 
+function* addGarden(action){
+  try{
+    yield axios.post('/api/garden', action.payload);
+    yield put({type: 'FETCH_GARDEN'});
+  } catch (error) {
+    console.log('Error adding new garden', error)
+  }
+}
+
 function* gardenSaga() {
   yield takeLatest('FETCH_GARDEN', fetchGarden);
   yield takeLatest('DELETE_GARDEN', deleteGarden);
+  yield takeEvery('ADD_GARDEN', addGarden);
 }
 
 export default gardenSaga;

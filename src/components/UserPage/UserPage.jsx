@@ -5,6 +5,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 
 import Garden from '../Garden/Garden';
+import GardenForm from '../GardenForm/GardenForm';
 
 
 
@@ -19,7 +20,11 @@ function UserPage() {
       <LogOutButton className="btn" />
 :
       <div>
-      <Garden />
+        <Garden />
+      </div>
+
+      <div>
+        <GardenForm />
       </div>
     </div>
   

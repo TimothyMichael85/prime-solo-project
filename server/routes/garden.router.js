@@ -28,11 +28,11 @@ router.post('/', (req, res) => {
   console.log(req.body);
   // POST route code here
   const queryText = `
-  INSERT INTO "garden" ("user_id", "is_active", "garden_name")
-  VALUES ($1, $2, $3)
+  INSERT INTO "garden" ("user_id", "garden_name")
+  VALUES ($1, $2)
   RETURNING "garden_id";`;
 
-  const queryValues = [req.body.user_id, req.body.is_active, req.body.garden_name]
+  const queryValues = [req.user.id, req.body.garden_name]
 
   pool.query(queryText, queryValues)
   .then (result => {

@@ -32,11 +32,12 @@ const handleClick = (id) => {
         <h2>Your current gardens</h2>
         <section className = 'gardens'>
             {garden.map(garden => {
+                console.log(garden)
                 return (
-                    <div key={garden.id}>
+                    <div key={garden.garden_id}>
                     <h3> {garden.garden_name}</h3>
-                    <img onClick = {() => handleClick(garden.id)} src='/images/gardenbed.jpeg' alt={garden.id}/>
-                    <button onClick={() => deleteGarden(garden.id)}>Delete</button>
+                    <img onClick = {() => handleClick(garden.garden_id)} src='/images/gardenbed.jpeg' alt={garden.garden_id}/>
+                    <button onClick={() => deleteGarden(garden.garden_id)}>Delete</button>
                     <br />
                     </div>
                 )

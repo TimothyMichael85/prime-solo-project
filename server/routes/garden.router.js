@@ -30,10 +30,10 @@ router.post('/', (req, res) => {
 });
 
 //Delete a garden
-router.delete ('/id', (req,res) => {
+router.delete ('/:id', (req,res) => {
   const queryText = `
   DELETE FROM "garden"
-  WHERE "id" = $1:`;
+  WHERE "garden_id" = $1;`;
   const queryValue = [req.params.id]
   pool.query(queryText, queryValue)
   .then( result => {
